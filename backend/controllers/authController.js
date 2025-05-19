@@ -69,7 +69,7 @@ exports.login = async (req, res) => {
 };
 
 
-// View all students (Teacher-only access)
+// View all students
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await User.find({ role: 'student' }).select('-password');

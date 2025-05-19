@@ -6,10 +6,10 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['student', 'teacher'], required: true },
-  // Student specific fields
+
   rollNumber: { type: String, required: function() { return this.role === 'student'; } },
   department: { type: String, required: function() { return this.role === 'student'; } },
-  // Teacher specific fields
+
   teacherId: { type: String, required: function() { return this.role === 'teacher'; } },
 }, { timestamps: true });
 

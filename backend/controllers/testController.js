@@ -17,7 +17,7 @@ exports.createTest = async (req, res) => {
       status: 'draft'
     });
 
-    // Create questions
+    
     const questionPromises = questions.map(q => 
       Question.create({
         text: q.text,
@@ -73,12 +73,12 @@ exports.updateTest = async (req, res) => {
     const test = await Test.findById(req.params.testId);
     if (!test) throw new Error('Test not found');
 
-    // Check if the user is authorized
+
     if (test.createdBy.toString() !== req.userId) {
       throw new Error('Not authorized');
     }
 
-    // Safely update fields if they're provided
+
     if (title !== undefined) test.title = title;
     if (description !== undefined) test.description = description;
     if (status !== undefined) test.status = status;
@@ -160,13 +160,12 @@ exports.getTestResults = async (req, res) => {
 // Add more questions to a test
 exports.addQuestionsToTest = async (req, res) => {
   try {
-    const { questions } = req.body; // expects array of { text, options, correctAnswer }
+    const { questions } = req.body; 
     const { testId } = req.params;
 
     const test = await Test.findById(testId);
     if (!test) throw new Error("Test not found");
 
-    // Only creator can modify
     if (test.createdBy.toString() !== req.userId) {
       throw new Error("Not authorized");
     }

@@ -11,7 +11,7 @@ const validateStudentSignup = [
 ];
 
 const validateTeacherSignup = [
-  // Similar validations for teacher signup
+  
 ];
 
 const validateLogin = [
@@ -20,7 +20,7 @@ const validateLogin = [
 ];
 
 const validateTestCreation = [
-  // Test creation validations
+ 
 ];
 
 module.exports = {

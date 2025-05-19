@@ -32,7 +32,6 @@ exports.startAttempt = async (req, res) => {
 
     if (!test) throw new Error('Test not found');
 
-    // Check if student already attempted this test
     const existingAttempt = await Attempt.findOne({
       test: testId,
       student: req.userId
@@ -46,7 +45,6 @@ exports.startAttempt = async (req, res) => {
       startedAt: new Date()
     });
 
-    // Return test questions without correct answers
     const questions = test.questions.map(q => ({
       id: q._id,
       text: q.text,
@@ -78,7 +76,7 @@ exports.submitAttempt = async (req, res) => {
     if (attempt.student.toString() !== req.userId) throw new Error('Not authorized');
     if (attempt.completedAt) throw new Error('Attempt already submitted');
 
-    // Calculate score
+  
     const questionMap = {};
     attempt.test.questions.forEach(q => {
       questionMap[q._id.toString()] = q;
@@ -104,9 +102,8 @@ exports.submitAttempt = async (req, res) => {
       };
     });
 
-    // Update attempt
     attempt.answers = answers.map(ans => ({
-  question: ans.questionId,  // This sets the correct field for the schema
+  question: ans.questionId,
   selectedOption: ans.selectedOption
 }));
     attempt.score = score;

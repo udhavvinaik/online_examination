@@ -1,4 +1,4 @@
-// Correct way to export the role middleware
+
 const roleMiddleware = (requiredRole) => {
   return (req, res, next) => {
     if (req.userRole !== requiredRole) {
@@ -8,5 +8,5 @@ const roleMiddleware = (requiredRole) => {
   };
 };
 
-// Export as named export
+
 module.exports = roleMiddleware;

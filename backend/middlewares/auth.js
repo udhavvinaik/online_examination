@@ -14,4 +14,4 @@ const auth = async (req, res, next) => {
   }
 };
 
-module.exports = auth ;  // Note: exporting as named export
+module.exports = auth ;
