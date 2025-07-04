@@ -18,7 +18,7 @@ import {
 } from "recharts";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const PastResults = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);

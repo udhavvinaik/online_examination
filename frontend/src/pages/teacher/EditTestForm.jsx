@@ -11,7 +11,7 @@ import {
 } from "antd";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const { TextArea } = Input;
 const { Title, Text } = Typography;
 

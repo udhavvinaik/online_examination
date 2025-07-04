@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Button, List, message, Spin, Tag } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const AvailableTests = () => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(true);

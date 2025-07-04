@@ -17,7 +17,8 @@ const LoginPage = () => {
       localStorage.setItem('user', JSON.stringify(res.data.user));
       message.success('Login successful');
       
-      const role = res.data.user.role; 
+      const role = res.data.user.role;
+      console.log(role); 
         if (role === 'student') {
         navigate('/student-dashboard');
         } else if (role === 'teacher') {

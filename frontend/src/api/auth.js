@@ -1,5 +1,6 @@
 import axios from 'axios';
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
+
 
 export const login = (data) => axios.post(`${apiBase}/api/auth/login`, data);
 

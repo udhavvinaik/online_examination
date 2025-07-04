@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 const { Option } = Select;
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const EditTests = () => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(false);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, message, DatePicker, TimePicker, Space, Card } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const CreateTest = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);

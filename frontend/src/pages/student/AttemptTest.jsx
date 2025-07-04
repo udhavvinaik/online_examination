@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { Card, Radio, Button, message, Progress } from 'antd';
 import axios from 'axios';
-const apiBase = process.env.REACT_APP_API_BASE_URL;
+const apiBase = import.meta.env.VITE_API_BASE_URL;
 const AttemptTest = () => {
   const { state } = useLocation();
   const { attemptId } = useParams();
