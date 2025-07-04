@@ -14,13 +14,13 @@ import AttemptTest from './pages/student/AttemptTest';
 import AvailableTests from './pages/student/AvailableTests';
 import PastResults from './pages/student/PastResults';
 import StudentProfile from './pages/student/StudentProfile';
-import Landing from "./pages/Landing";
+
 const App = () => {
   const isAuthenticated = !!localStorage.getItem("token");
 
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route
