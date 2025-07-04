@@ -18,7 +18,7 @@ import {
 } from "recharts";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const PastResults = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ const PastResults = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:5000/api/results/student", {
+      const res = await axios.get(`${apiBase}/api/results/student`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ const PastResults = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        `http://localhost:5000/api/results/${attemptId}`,
+        `${apiBase}/api/results/${attemptId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ const PastResults = () => {
     fetchResults();
   }, []);
 
-  const COLORS = ["#00C49F", "#FF8042"]; // Correct, Incorrect
+  const COLORS = ["#00C49F", "#FF8042"]; 
 
   return (
     <>

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 const { Option } = Select;
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const EditTests = () => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const EditTests = () => {
   const fetchTests = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/tests/teacher", {
+      const res = await axios.get(`${apiBase}/api/tests/teacher`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = Array.isArray(res.data) ? res.data : [];
@@ -38,7 +38,7 @@ const EditTests = () => {
 
   const deleteTest = async (testId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tests/${testId}`, {
+      await axios.delete(`${apiBase}/api/tests/${testId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       message.success("Test deleted");
@@ -51,7 +51,7 @@ const EditTests = () => {
   const updateStatus = async (testId, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/tests/${testId}`,
+        `${apiBase}/api/tests/${testId}`,
         { status: newStatus },
         {
           headers: {

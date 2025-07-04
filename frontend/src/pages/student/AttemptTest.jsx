@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { Card, Radio, Button, message, Progress } from 'antd';
 import axios from 'axios';
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const AttemptTest = () => {
   const { state } = useLocation();
   const { attemptId } = useParams();
@@ -26,7 +26,7 @@ const AttemptTest = () => {
 
       if (remaining === 0) {
         clearInterval(interval);
-        handleSubmit(); // Auto-submit on timeout
+        handleSubmit(); 
       }
     }, 1000);
 
@@ -55,7 +55,7 @@ const AttemptTest = () => {
       console.log(testData)
 
       const res = await axios.post(
-        `http://localhost:5000/api/attempts/${attemptId}/submit`,
+        `${apiBase}/api/attempts/${attemptId}/submit`,
         { answers: formattedAnswers },
         {
           headers: {
@@ -103,7 +103,7 @@ const AttemptTest = () => {
             style={{ marginTop: 16 }}
           >
             <Radio.Group
-              name={`question-${q.id}`} // ensures each group is independent
+              name={`question-${q.id}`} 
               onChange={(e) => handleChange(q.id, e.target.value)}
               value={answers[q.id]}
             >

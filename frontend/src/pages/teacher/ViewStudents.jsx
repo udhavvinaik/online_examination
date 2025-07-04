@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Table, message } from 'antd';
 import axios from 'axios';
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const ViewStudents = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/auth/students');
+      const res = await axios.get(`${apiBase}/api/auth/students`);
       const formatted = res.data.map((s) => ({
         key: s._id,
         name: s.name,

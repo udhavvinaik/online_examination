@@ -11,7 +11,7 @@ import {
 } from "antd";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const { TextArea } = Input;
 const { Title, Text } = Typography;
 
@@ -30,7 +30,7 @@ const EditTestForm = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/api/tests/${testId}`,
+          `${apiBase}/api/tests/${testId}`,
           {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
           }
@@ -51,7 +51,7 @@ const EditTestForm = () => {
   const handleTestUpdate = async (values) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tests/${testId}`,
+        `${apiBase}/api/tests/${testId}`,
         values,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -66,7 +66,7 @@ const EditTestForm = () => {
   const handleAddQuestions = async () => {
     try {
       await axios.post(
-        `http://localhost:5000/api/tests/${testId}/questions`,
+        `${apiBase}/api/tests/${testId}/questions`,
         { questions: newQuestions },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

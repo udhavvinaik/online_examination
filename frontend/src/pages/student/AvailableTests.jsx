@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Button, List, message, Spin, Tag } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const AvailableTests = () => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const AvailableTests = () => {
   const fetchTests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/attempts/student', {
+      const res = await axios.get(`${apiBase}/api/attempts/student`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ const AvailableTests = () => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'http://localhost:5000/api/attempts',
+        `${apiBase}/api/attempts`,
         { testId },
         {
           headers: {
@@ -38,7 +38,7 @@ const AvailableTests = () => {
         }
       );
 
-      // ✅ Correct navigation using `attemptId`
+     
       navigate(`/test/${res.data.attemptId}`, {
         state: {
           testData: res.data,

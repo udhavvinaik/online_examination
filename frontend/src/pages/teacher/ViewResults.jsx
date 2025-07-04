@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 const COLORS = ["#00C49F", "#FF8042"]; // Correct, Incorrect
-
+const apiBase = process.env.REACT_APP_API_BASE_URL;
 const ViewResults = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ const ViewResults = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        "http://localhost:5000/api/results/all-tests",
+        `${apiBase}/api/results/all-tests`,
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
 
